@@ -1,0 +1,40 @@
+/**
+* @name style.module
+* @author Lester
+* @date 2021-06-03 15:09
+*/
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: 0.3rem;
+  padding: 0.05rem 0;
+
+  .input {
+    flex: 1;
+    height: 100%;
+    border: transparent;
+    background: transparent;
+    font-size: 0.12rem;
+    color: #000000;
+    line-height: 0.12rem;
+
+    &::placeholder,
+    &::-webkit-input-placeholder {
+      font-size: 0.1rem;
+      color: #999999;
+    }
+  }
+
+  .searchIcon {
+    margin-right: 0.04rem;
+    font-size: 0.2rem;
+    color: #999999;
+  }
+
+  .clearIcon {
+    font-size: 0.15rem;
+    color: #999999;
+  }
+}

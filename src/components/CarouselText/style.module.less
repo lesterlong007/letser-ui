@@ -1,0 +1,33 @@
+/**
+* @name style.module
+* @author Lester
+* @date 2021-05-12 16:21
+*/
+
+.wrap {
+  width: 100%;
+  overflow: hidden;
+
+  .content {
+    white-space: nowrap;
+    width: fit-content;
+
+    &.active {
+      animation: carousel 4s linear infinite;
+    }
+
+    @keyframes carousel {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .text {
+      margin-left: 1rem;
+      display: inline-block;
+    }
+  }
+}
