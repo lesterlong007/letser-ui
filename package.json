@@ -1,6 +1,6 @@
 {
   "name": "lester-ui",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "lester's ui component library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -11,7 +11,7 @@
     "start": "cross-env NODE_ENV=development webpack serve --no-static --config  config/start.js",
     "build": "cross-env NODE_ENV=production webpack --config config/build.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx src/ components/",
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx src/",
     "release": "webpack --config config/publish.js",
     "rollup-build": "rollup --config config/rollup.config.js"
   },
@@ -28,7 +28,7 @@
     "**/*.{js.jsx,ts,tsx}": "npm run lint"
   },
   "keywords": [
-    "lester"
+    "lester", "react", "ui", "component", "typescript"
   ],
   "author": "lester",
   "license": "ISC",
