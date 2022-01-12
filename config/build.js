@@ -16,10 +16,10 @@ const webpackConfig = require('./webpack.config');
 const buildConfig = {
   plugins: [
     new CleanWebpackPlugin(),
-    new SimpleProgressWebpackPlugin(),
+    new SimpleProgressWebpackPlugin()
   ].filter(Boolean),
   performance: {
-    hints: false,
+    hints: false
   },
   optimization: {
     splitChunks: {
@@ -35,16 +35,16 @@ const buildConfig = {
         baseChunks: {
           name: 'base.chunks', // 要分隔出来的 chunk 名称
           test: (module) => /react|react-dom|react-router-dom|axios/.test(module.context),
-          priority: 20, // 打包优先级
+          priority: 20 // 打包优先级
         },
         // 打包其余的的公共代码
         default: {
           name: 'common.chunks', // 要分隔出来的 chunk 名称
           minChunks: 2, // 引入两次及以上被打包
           priority: 5,
-          reuseExistingChunk: true, // 可设置是否重用已用chunk 不再创建新的chunk
-        },
-      },
+          reuseExistingChunk: true // 可设置是否重用已用chunk 不再创建新的chunk
+        }
+      }
     },
     minimizer: [
       new TerserWebpackPlugin({
@@ -52,19 +52,19 @@ const buildConfig = {
         terserOptions: {
           output: {
             comments: false,
-            ascii_only: true,
+            ascii_only: true
           },
           compress: {
             drop_console: false,
             drop_debugger: true,
-            comparisons: false,
+            comparisons: false
           },
-          safari10: true,
-        },
+          safari10: true
+        }
       }),
-      new OptimizeCSSAssetsPlugin({}),
-    ],
-  },
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  }
 };
 
 module.exports = merge(webpackConfig(), buildConfig);

@@ -14,7 +14,7 @@ import FastClick from 'fastclick';
   const resizeEvent: string = 'orientationchange' in window ? 'orientationchange' : 'resize';
   const reCalc = () => {
     const clientWidth: number = docBody.clientWidth || docEl.clientWidth || win.innerWidth || 375;
-    const calcFontSize: number = 10 * (clientWidth / 375);
+    const calcFontSize: number = 100 * (clientWidth / 375);
     docEl.style.fontSize = calcFontSize + 'px';
     docEl.style.opacity = '1';
   };

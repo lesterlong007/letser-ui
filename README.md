@@ -1,10 +1,21 @@
-In the project directory, you can run:
+### `lester-ui React组件库说明`
 
-### `lester-UI组件库说明`
+📦 安装（Install）
+#### npm install lester-ui
+or
+#### yarn add lester-ui
 
-开箱即用
+🔨 Usage  
+import { Icon, CarouselText } from 'lester-ui';  
+> const App = () => (  
+ <>  
+ `<Icon name="icon" />`  
+ `<CarouselText>text ....<CarouselText/>`  
+ </>  
+); 
 
-### 代码规范
+### 关于
 
-eslint + prettier<br />
-[前端通用代码规范](https://github.com/BingKui/javascript-zh)
+[github源码](https://github.com/LesterLong2020/letser-ui)
+<br/>
+#### 联系我们: longchb13@lzu.edu.cn

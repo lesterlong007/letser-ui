@@ -48,7 +48,7 @@ const ScrollList: React.FC<ScrollListProps> = ({ children, onLoad, loaded, onRef
           const contentHeight: number = contentRef.current.clientHeight;
           const scrollDistance: number = scrollRef.current.scrollTop;
           if (wrapHeight + scrollDistance > contentHeight - 10) {
-            console.log('底部l');
+            console.log('底部了');
             !loaded && loadMore();
           }
         }, 100);
