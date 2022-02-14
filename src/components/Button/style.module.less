@@ -1,0 +1,31 @@
+/**
+* @name style.module
+* @author Lester
+* @date 2022-02-11 14:56
+*/
+.btn {
+  padding: 9px 48px;
+  border: 1px solid #318CF5;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #318CF5;
+  cursor: pointer;
+  background-color: white;
+
+  &.disabled {
+    border-color: #7E8185;
+    color: #7E8185;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  &.primary {
+    background-color: #318CF5;
+    color: white;
+    border-color: transparent;
+
+    &.disabled {
+      opacity: 0.4;
+    }
+  }
+}

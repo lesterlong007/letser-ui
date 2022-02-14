@@ -9,3 +9,4 @@ export { default as CarouselText } from './CarouselText/CarouselText';
 export { default as ScrollList } from './ScrollList/ScrollList';
 export { default as DrawerItem } from './DrawerItem/DrawerItem';
 export { default as Skeleton } from './Skeleton/Skeleton';
+export { default as Button } from './Button/Button';

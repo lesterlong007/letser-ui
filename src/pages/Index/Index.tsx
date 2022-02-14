@@ -6,7 +6,7 @@
 
 import React, { useContext, useEffect } from 'react';
 import { Context } from 'src/store';
-import { CarouselText } from 'src/components';
+import { CarouselText, Button } from 'src/components';
 import { words } from 'src/utils/data';
 import style from './style.module.less';
 
@@ -30,6 +30,7 @@ const Index: React.FC = () => {
           words.map((val: string) => <li key={val}>{val}</li>)
         }
       </ul>
+      <Button type="primary">按钮</Button>
     </div>
   );
 };
