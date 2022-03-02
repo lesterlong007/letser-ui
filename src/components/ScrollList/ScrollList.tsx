@@ -4,18 +4,22 @@
  * @date 2021-06-02 14:07
  */
 
-import React, { useRef, useState, MutableRefObject } from 'react';
+import React, { useRef, useState, MutableRefObject, useImperativeHandle } from 'react';
 import classNames from 'classnames';
 import style from './style.module.less';
 
 interface ScrollListProps {
+  scrollListRef?: MutableRefObject<any>;
   onLoad: () => Promise<any>;
   onRefresh?: () => void;
   backgroundColor?: string;
   loaded: boolean;
+  className?: string;
+  hideFooterTips?: boolean;
 }
 
-const ScrollList: React.FC<ScrollListProps> = ({ children, onLoad, loaded, onRefresh, backgroundColor }) => {
+const ScrollList: React.FC<ScrollListProps> = (props) => {
+  const { scrollListRef, children, onLoad, loaded, onRefresh, backgroundColor, className, hideFooterTips } = props;
   const [loading, setLoading] = useState<boolean>(false);
   const [translateY, setTranslateY] = useState<number>(0);
   const [startY, setStartY] = useState<number>(0);
@@ -47,11 +51,10 @@ const ScrollList: React.FC<ScrollListProps> = ({ children, onLoad, loaded, onRef
           const wrapHeight: number = scrollRef.current.clientHeight;
           const contentHeight: number = contentRef.current.clientHeight;
           const scrollDistance: number = scrollRef.current.scrollTop;
-          if (wrapHeight + scrollDistance > contentHeight - 10) {
-            console.log('底部了');
+          if (wrapHeight + scrollDistance > contentHeight - 20) {
             !loaded && loadMore();
           }
-        }, 100);
+        }, 150);
       }
     };
   };
@@ -98,10 +101,16 @@ const ScrollList: React.FC<ScrollListProps> = ({ children, onLoad, loaded, onRef
     flagRef.current = false;
   };
 
+  useImperativeHandle(scrollListRef, () => ({
+    resetScroll: () => {
+      scrollRef.current.scrollTop = 0;
+    }
+  }));
+
   return (
     <div
       ref={scrollRef}
-      className={style.scrollWrap}
+      className={classNames(style.scrollWrap, className)}
       onScroll={scroll()}
       onMouseDown={(e) => start(e.clientY)}
       onMouseMove={move('mouse')}
@@ -123,11 +132,13 @@ const ScrollList: React.FC<ScrollListProps> = ({ children, onLoad, loaded, onRef
         style={{ transform: `translateY(${translateY}px)`, backgroundColor: backgroundColor || 'white' }}
       >
         {children}
-        <footer className={style.tipsWrap}>
-          <span className={style.line} />
-          <span className={style.tipsText}>{loading ? '拼命加载中' : '没有更多啦'}</span>
-          <span className={style.line} />
-        </footer>
+        {!hideFooterTips && (
+          <footer className={style.tipsWrap}>
+            {/* <span className={style.line} /> */}
+            <span className={style.tipsText}>{loading ? '拼命加载中' : '没有更多啦'}</span>
+            {/* <span className={style.line} /> */}
+          </footer>
+        )}
       </div>
     </div>
   );
